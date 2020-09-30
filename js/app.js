@@ -1,17 +1,7 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
+// Global variables
+const navBar = document.querySelector('#navbar__list')
+const sections = Array.from(document.querySelectorAll('section'));
+const sectionNum = sections.length;
 
 /**
  * Define Global Variables
