@@ -11,7 +11,6 @@ for(let i = 1; i <= sectionNum; i++) {
     //Creating new links in each list item
     const listItemLink = document.createElement('a');
     listItem.appendChild(listItemLink);
-    //Make the link scroll to the selected section
     //Make scrool behaveior smooth
     const html = document.querySelector('html');
     html.style.scrollBehavior = 'smooth';
@@ -25,38 +24,34 @@ for(let i = 1; i <= sectionNum; i++) {
     listItemLink.classList.add('menu__link');
 }
 
+// Highliting the in viewport section
+document.addEventListener('scroll', function() {
+    for(const section of sections){
+        if(inViewPort(section)) {
+            stylingSection(section);
+        }else {
+            removeStylingSection(section);
+        }
+    }
+});
 
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
+// Functions
+// Testing if the secyion isn the viewport or not
+function inViewPort(section) {
+    const bounding = section.getBoundingClientRect();
+    if(bounding.top > 0 && bounding.bottom > 0) {
+        return true;
+    }else {
+        return false;
+    }
+}
 
+// Styling the highlighted section 
+function stylingSection(section) {
+    section.style.cssText = 'border: 1px dashed #95f;'
+}
 
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
-// build the nav
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
+// Removing styling
+function removeStylingSection(section) {
+    section.style.cssText = 'border: none;'
+}
