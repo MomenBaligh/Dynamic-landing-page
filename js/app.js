@@ -2,8 +2,6 @@
 const navBar = document.querySelector('#navbar__list')
 const sections = Array.from(document.querySelectorAll('section'));
 const sectionNum = sections.length;
-const winWidth = window.innerWidth;
-const winHeight = window.innerHeight;
 
 //Make nav bar dynamic 
 for(let i = 1; i <= sectionNum; i++) {
@@ -41,7 +39,7 @@ document.addEventListener('scroll', function() {
 // Testing if the secyion isn the viewport or not
 function inViewPort(section) {
     const bounding = section.getBoundingClientRect();
-    if(bounds.top >= 0 && bounds.left >= 0 && bounds.right <= winWidth && bounds.bottom <= winHeight) {
+    if(bounding.top > 0 && bounding.bottom > 0) {
         return true;
     }else {
         return false;
