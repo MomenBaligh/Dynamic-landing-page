@@ -13,12 +13,16 @@ for(let i = 1; i <= sectionNum; i++) {
     listItem.appendChild(listItemLink);
     //Make the link scroll to the selected section
     //Make scrool behaveior smooth
+    const html = document.querySelector('html');
     html.style.scrollBehavior = 'smooth';
+    //Make the link scroll to the selected section
     const aTagAtt = document.createAttribute("href");
     aTagAtt.value = "#section" + i;
     listItemLink.setAttributeNode(aTagAtt);
     //Puting the section name in the list item
     listItemLink.textContent = sections[i-1].getAttribute('data-nav');
+    //Adding class
+    listItemLink.classList.add('menu__link');
 }
 
 
