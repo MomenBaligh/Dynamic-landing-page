@@ -12,6 +12,8 @@ for(let i = 1; i <= sectionNum; i++) {
     const listItemLink = document.createElement('a');
     listItem.appendChild(listItemLink);
     //Make the link scroll to the selected section
+    //Make scrool behaveior smooth
+    html.style.scrollBehavior = 'smooth';
     const aTagAtt = document.createAttribute("href");
     aTagAtt.value = "#section" + i;
     listItemLink.setAttributeNode(aTagAtt);
