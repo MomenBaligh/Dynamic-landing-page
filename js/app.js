@@ -1,57 +1,56 @@
-// Global variables
 const navBar = document.querySelector('#navbar__list');
 const sections = Array.from(document.querySelectorAll('section'));
 const sectionNum = sections.length;
+const fragment = document.createDocumentFragment();
+const vh = window.innerHeight;
+const vhm = vh * -1;
 
-//Make nav bar dynamic 
-for(let i = 1; i <= sectionNum; i++) {
-    //Creating new list items in the nav bar
+// Make scroll behaveior smooth
+const html = document.querySelector('html');
+html.style.scrollBehavior = 'smooth';
+
+// Making nav bar dynamic and styling it
+sections.forEach((section, index)=> {
+    // Creating new list items in the nav bar
     const listItem = document.createElement('li');
-    navBar.appendChild(listItem);
-    //Creating new links in each list item
+
+    // Creating new links in each list item
     const listItemLink = document.createElement('a');
-    listItem.appendChild(listItemLink);
-    //Make scrool behaveior smooth
-    const html = document.querySelector('html');
-    html.style.scrollBehavior = 'smooth';
-    //Make the link scroll to the selected section
-    const aTagAtt = document.createAttribute("href");
-    aTagAtt.value = "#section" + i;
-    listItemLink.setAttributeNode(aTagAtt);
-    //Puting the section name in the list item
-    listItemLink.textContent = sections[i-1].getAttribute('data-nav');
-    //Adding class
+
+    // Make the section name scroll to it when clicked
+    const aTagAtt = document.createAttribute('href');
+    const i = index+1;
+    aTagAtt.value = '#section' + i;
+
+    // Puting the section name in the nav bar
+    listItemLink.textContent = section.getAttribute('data-nav');
+    
+    // Add class to style the nav bar
     listItemLink.classList.add('menu__link');
-}
+
+    // Adding all list elements to the DOM
+    listItemLink.setAttributeNode(aTagAtt);
+    listItem.appendChild(listItemLink);
+    fragment.appendChild(listItem);
+    navBar.appendChild(fragment);
+})
 
 // Highliting the in viewport section
-document.addEventListener('scroll', function() {
+document.addEventListener('scroll', ()=> {
     for(const section of sections){
         if(inViewPort(section)) {
-            stylingSection(section);
-        }else {
-            removeStylingSection(section);
+            section.style.cssText = 'background-color: green;';
+        } else {
+            section.style.cssText = 'border: none;';
         }
     }
 });
 
-// Functions
-// Testing if the secyion isn the viewport or not
+// Testing if the secyion is in the viewport or not
 function inViewPort(section) {
     const bounding = section.getBoundingClientRect();
-    if(bounding.top > 0 && bounding.bottom > 0) {
+    if(bounding.top > vhm/2 && bounding.bottom < vh ) {
         return true;
-    }else {
-        return false;
     }
-}
-
-// Styling the highlighted section 
-function stylingSection(section) {
-    section.style.cssText = 'border: 1px dashed #95f;';
-}
-
-// Removing styling
-function removeStylingSection(section) {
-    section.style.cssText = 'border: none;';
+    return false;
 }
