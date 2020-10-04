@@ -39,7 +39,7 @@ sections.forEach((section, index)=> {
 document.addEventListener('scroll', ()=> {
     for(const section of sections){
         if(inViewPort(section)) {
-            section.style.cssText = 'background-color: green;';
+            section.style.cssText = 'border: 2px solid pink;';
         } else {
             section.style.cssText = 'border: none;';
         }
