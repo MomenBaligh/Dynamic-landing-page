@@ -1,5 +1,5 @@
 // Global variables
-const navBar = document.querySelector('#navbar__list')
+const navBar = document.querySelector('#navbar__list');
 const sections = Array.from(document.querySelectorAll('section'));
 const sectionNum = sections.length;
 
@@ -48,10 +48,10 @@ function inViewPort(section) {
 
 // Styling the highlighted section 
 function stylingSection(section) {
-    section.style.cssText = 'border: 1px dashed #95f;'
+    section.style.cssText = 'border: 1px dashed #95f;';
 }
 
 // Removing styling
 function removeStylingSection(section) {
-    section.style.cssText = 'border: none;'
+    section.style.cssText = 'border: none;';
 }
