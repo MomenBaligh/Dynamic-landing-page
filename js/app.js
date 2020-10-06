@@ -54,3 +54,15 @@ function inViewPort(section) {
     }
     return false;
 }
+
+// Adding go to top botton
+const goToBotton = document.createElement('botton');
+goToBotton.style.cssText = 'width: 40px ; height: 40px; position: fixed; bottom: 5%; right: 5%; border-radius:100%; background-color: rgb(0, 120, 156); border: 5px white; color: white; text-align: center; text-justify: center; padding: 15px; cursor: pointer;';
+goToBotton.innerHTML = 'Go Top';
+console.log(goToBotton);
+document.body.appendChild(goToBotton);
+
+// Make the top botton go to the top of the page
+goToBotton.addEventListener('click', ()=> {
+    scrollTo(0,0);
+})
